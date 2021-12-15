@@ -1,0 +1,28 @@
+<div>
+
+  <h1>Liste des contacts</h1>
+
+  <ul>
+    <li *ngFor="let user of userList" (click)="show(user)">{{user.name}}</li>
+  </ul>
+</div>
+
+
+<div>
+
+  <h1>Ajouter des contacts</h1>
+
+  <input type="text" placeholder="votre nom..." [(ngModel)]="name">
+  <input type="text" placeholder="votre pseudo..." [(ngModel)]="pseudo">
+  <input type="email" placeholder="votre email..." [(ngModel)]="email">
+  <button (click)="createUser()">Ajouter</button>
+</div>
+
+<div>
+
+  <h1 *ngIf="activeUser.name">Modification de {{activeUser.name}}</h1>
+
+  <p>{{activeUser.pseudo}}</p>
+  <p>{{activeUser.email}}</p>
+  <input *ngIf="activeUser.name !== ''" type="text" [(ngModel)]="activeUser.name" (keypress)="editUser($event)">
+</div>
